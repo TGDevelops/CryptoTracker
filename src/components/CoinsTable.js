@@ -1,4 +1,4 @@
-import { Container, createTheme, CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, ThemeProvider, Typography, makeStyles } from '@material-ui/core';
+import { Container, createTheme, CircularProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, ThemeProvider, Typography, makeStyles } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { CoinList } from '../config/api';
@@ -37,13 +37,12 @@ const CoinsTable = () => {
   const classes = useStyles();
   const [ page, setPage ] = useState([1]);
 
-  const fetchCoins = async () => {
+  useEffect(() => {
+    const fetchCoins = async () => {
       const { data } = await axios.get(CoinList(currency));
       setCoins(data);
       setLoading(false);
-  }
-
-  useEffect(() => {
+  };
     fetchCoins();
   }, [currency])
 
@@ -88,7 +87,7 @@ const CoinsTable = () => {
               <Table>
               <TableHead style={{ backgroundColor: "#EEBC1D"}}>
                 <TableRow>
-                  {["Coin", "Price", "Last 24h Change", "Market Cap"]. map((head)=>(
+                  {["Coin", "Price", "Last 24h Change", "Market Cap"].map((head)=>(
                     <TableCell 
                       style={{
                         color: "black",

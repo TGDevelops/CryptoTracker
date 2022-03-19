@@ -32,12 +32,11 @@ const Carousel = () => {
   const { currency, symbol } = CryptoState();
   const [trendingCoins, setTrendingCoins] = useState([]);
 
-  const fetchTrendingCoins = async () => {
+  useEffect(()=> {
+    const fetchTrendingCoins = async () => {
       const { data } = await axios.get(TrendingCoins(currency));
       setTrendingCoins(data);
-  }
-
-  useEffect(()=> {
+  };
     fetchTrendingCoins();
   }, [currency]);
 
