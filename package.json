@@ -1,7 +1,6 @@
 {
   "name": "crypto-hunter",
   "version": "0.1.0",
-  "homepage": "https://projects.techiedebt.com",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
